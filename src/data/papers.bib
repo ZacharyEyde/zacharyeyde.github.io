@@ -1,0 +1,71 @@
+% Zachary Eyde — publications (conference papers, journal articles, preprints).
+% Talks and poster sessions live in src/data/talks.yml instead.
+%
+% Custom fields supported by as-folio:
+%   abbr             = short venue badge (e.g. PhysRev, Nature)
+%   abstract         = shown in collapsible abstract block
+%   selected         = {true} to show in "Selected Publications" on about page
+%   preview          = path to thumbnail image in /assets/img/publication_preview/
+%   arxiv            = arXiv ID (e.g. 1234.56789) — auto-links to arxiv.org/abs/
+%   html             = URL to paper landing page (HTML version)
+%   pdf              = path or URL to PDF
+%   code             = URL to code repository
+%   poster           = path to poster PDF
+%   slides           = path to slides PDF
+%   video            = URL to video presentation
+%   supp             = URL to supplementary material
+%   blog             = URL to blog post about this paper
+%   website          = URL to project website
+%   award            = award text (e.g. "Best Paper Award")
+%   award_name       = short award label badge
+%   bibtex_show      = {true} to show BibTeX citation button
+%   annotation       = short note shown as info tooltip in author line
+%   additional_info  = extra text shown after venue/year (e.g. workshop info)
+%   google_scholar_id = paper-level Scholar ID for citation badge
+%   altmetric        = {true} to use DOI/arXiv for Altmetric badge, or explicit ID
+%   dimensions       = {true} to use DOI for Dimensions badge, or explicit ID
+%   inspirehep_id    = InspireHEP literature record ID for citation badge
+
+% ─── Conference papers ───────────────────────────────────────────────────────
+
+@inproceedings{eyde2026ergminer,
+  abbr        = {WSC},
+  title       = {{ERGminer}: Mining Event Relationship Graphs from Event Logs for Discrete-Event Simulation},
+  author      = {Eyde, Zachary and Pedrielli, Giulia},
+  booktitle   = {Proceedings of the 2026 Winter Simulation Conference},
+  address     = {Glasgow, Scotland},
+  year        = {2026},
+  pdf         = {eyde_pedrielli_wsc2026_ergminer.pdf},
+  abstract    = {Digital twins of manufacturing systems require simulation models that are structurally faithful and statistically calibrated, yet building them by hand is time-consuming, error-prone, and difficult to scale. We present ERGminer, an open-source Python tool that automatically discovers Event Relationship Graph (ERG) models from minimal event logs. The pipeline integrates Alpha Miner process discovery, queueing-network activity classification, system identification, guard detection, and distribution fitting into a single workflow. It outputs an executable ERG with server-busy flags, queue-length counters, service-time distributions, and resource-flow arcs, and validates the model through playback-based conformance testing. We evaluated ERGminer through 3 benchmark cases (and associated event logs): Markovian queue, tandem Markovian network, and a three-stage serial Markovian network with rework. The replay of the mined ERGs shows high-conformance matching to the behavior across the synthetic benchmarks. Future work includes parallel server discovery, failure-arc detection, routing-policy inference, and hierarchical ERGs for complex manufacturing systems.},
+  selected    = {true},
+  bibtex_show = {true}
+}
+
+@inproceedings{dodge2025modular,
+  abbr        = {WSC},
+  title       = {Modular {Python} Library for Simulations of Semiconductor Assembly and Test Process Equipment},
+  author      = {Dodge, Robert and Eyde, Zachary and Pedrielli, Giulia},
+  booktitle   = {Proceedings of the 2025 Winter Simulation Conference},
+  address     = {Seattle, WA},
+  year        = {2025},
+  doi         = {10.1109/WSC68292.2025.11338936},
+  html        = {https://doi.org/10.1109/WSC68292.2025.11338936},
+  abstract    = {Increasing global demand has led to calls for better methods of process improvement for semiconductor wafer manufacturing. Of these methods, digital twins have emerged as a natural extension of already existing simulation techniques. We argue that despite their extensive use in literature, the current tools used to construct semiconductor simulations are underdeveloped. Without a standardized tool to build these simulations, their modularity and capacity for growth are heavily limited. In this paper, we propose and implement a library of classes in the Python language designed to build on top of the already existing SimPy library. These classes are designed to automatically handle specific common logical features of semiconductor burn-in processes. This design allows users to easily create modular, adaptable, digital twin-ready simulations. Preliminary results demonstrate the library's efficacy in predicting against benchmark data provided by the Intel Corporation and encourage further development.},
+  selected    = {true},
+  bibtex_show = {true}
+}
+
+@inproceedings{eyde2024processdt,
+  abbr        = {WSC},
+  title       = {Process Digital Twin for Semiconductor Test Equipment Using {DES} and {ML}},
+  author      = {Eyde, Zach and Dodge, Robert and Pedrielli, Giulia},
+  booktitle   = {Proceedings of the 2024 Winter Simulation Conference},
+  address     = {Orlando, FL},
+  year        = {2024},
+  additional_info = {Poster},
+  pdf         = {eyde_wsc2024_process_digital_twin.pdf},
+  poster      = {eyde_wsc2024_poster.pdf},
+  slides      = {eyde_wsc2024_poster_slides.pdf},
+  abstract    = {Implementing a digital twin (DT) in semiconductor manufacturing is a rising area of research. In this work, we address key challenges faced to a practical DT implementation in the context of Testing. Specifically, we consider Intel modules (Burn In, Structural Test and System-Level Test) and build an infrastructure for their twinning. According to our infrastructure a DT-agent contains several models whose accuracy and execution complexity are largely different and that can be adopted for providing insights offline as well as at runtime. We introduce the enabler for the Semiconductor Tester DT-agent which we constructed as a high-fidelity Discrete Event Model to support offline optimization and analytics tasks. Such model can be used to train a ML model that can, instead, be used at runtime. The team will investigate methodologies to auto-generate the DES from a base model and auto-repair the DES based on production data.},
+  bibtex_show = {true}
+}

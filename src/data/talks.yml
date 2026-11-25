@@ -1,0 +1,72 @@
+# Talks, presentations, and poster sessions. Shown on the /talks/ page.
+#
+# Posters (type: poster) get their own "poster sessions" section; everything
+# else appears under "talks & presentations". Newest first, sorted by date.
+#
+# Fields (only title is required):
+#   title:       talk or poster title
+#   type:        talk | invited | seminar | poster
+#   abbr:        short badge text, e.g. WSC (defaults to the type)
+#   event:       conference, workshop, or venue
+#   location:    city, state or country
+#   date:        'YYYY-MM' or 'YYYY-MM-DD'. Keep the quotes.
+#   paper:       citation key from src/data/papers.bib. Adds a "paper" button.
+#   slides:      PDF file name in public/assets/pdf/, or a full URL
+#   poster:      PDF file name in public/assets/pdf/, or a full URL
+#   video:       full URL to a recording
+#   description: one or two sentences (optional)
+
+- title: 'ERGminer: Mining Event Relationship Graphs from Event Logs for Discrete-Event Simulation'
+  type: talk
+  abbr: WSC
+  event: 2026 Winter Simulation Conference
+  location: Glasgow, Scotland
+  date: '2026-12'
+  paper: eyde2026ergminer
+
+- title: 'From Engineering Student to Technology Development at Intel'
+  type: talk
+  abbr: ASU
+  event: ASU Semiconductor Week 2026
+  location: Tempe, AZ
+  date: '2026-10'
+  slides: eyde_asu_semiconductor_week_2026.pdf
+  description: Career talk for engineering students, followed by an overview of physics-informed neural networks for thermal contact sensing in final test.
+
+- title: 'Physics-Informed Neural Networks for Thermal Contact Sensing in Final Test'
+  type: talk
+  abbr: SEMICON
+  event: SEMICON West 2026
+  location: San Francisco, CA
+  date: '2026-10'
+  slides: eyde_semiconwest2026_pinn_thermal_contact.pdf
+  description: A physics-informed surrogate model of the die-to-test-head thermal interface, built in NVIDIA PhysicsNeMo, for catching gross thermal-contact defects during the start-of-test soak.
+
+- title: 'Automatic Generation of Models and Processes from Data'
+  type: talk
+  abbr: INFORMS
+  event: 2025 INFORMS Annual Meeting
+  location: Atlanta, GA
+  date: '2025-10'
+  slides: eyde_informs2025_automatic_model_generation.pdf
+  description: With Robert Dodge, Qixian (Eva) Zhou, and Giulia Pedrielli.
+
+- title: 'Process Digital Twin for Test Equipment using Discrete Event Simulation and Machine Learning'
+  type: talk
+  abbr: SEMICON
+  event: SEMICON West 2025
+  location: Phoenix, AZ
+  date: '2025-10'
+  slides: eyde_semiconwest2025_process_digital_twin.pdf
+  description: With Robert Dodge and Giulia Pedrielli.
+
+- title: 'Process Digital Twin for Semiconductor Test Equipment using DES and ML'
+  type: poster
+  abbr: WSC
+  event: 2024 Winter Simulation Conference
+  location: Orlando, FL
+  date: '2024-12-15'
+  paper: eyde2024processdt
+  poster: eyde_wsc2024_poster.pdf
+  slides: eyde_wsc2024_poster_slides.pdf
+  description: With Robert Dodge and Giulia Pedrielli.

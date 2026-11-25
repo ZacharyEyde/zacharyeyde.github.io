@@ -1,0 +1,7 @@
+github_users:
+  - zeyde-eng
+
+# Add public repositories to pin on the /repositories/ page, e.g. zeyde-eng/my-repo
+github_repos: []
+
+repo_description_lines_max: 2

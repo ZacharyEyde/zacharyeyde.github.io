@@ -1,0 +1,129 @@
+# RenderCV YAML format — https://docs.rendercv.com/
+# Used by the CV page when site.cv.format is 'rendercv'.
+# The CV page shows these sections: education, experience, publications,
+# awards, skills, interests. Keep dates quoted ('YYYY-MM').
+
+cv:
+  name: Zachary Eyde, P.E.
+  location: Chandler, AZ
+  email: zach.eyde@gmail.com
+  website: https://zacharyeyde.github.io
+  summary: Principal Engineer-track technical leader driving quality transformation, automated inspection, and AI/ML innovation across Intel Foundry semiconductor test operations. Extensive cross-functional leadership spanning mechanical, electrical, and industrial engineering, with a track record of translating statistical rigor, agentic-AI tooling, and university research into factory cost, quality, and productivity gains.
+  social_networks:
+    - network: LinkedIn
+      username: zacheyde
+    - network: GitHub
+      username: zeyde-eng
+
+  sections:
+    education:
+      - institution: Arizona State University
+        area: Engineering
+        degree: PhD
+        start_date: '2024'
+        end_date: present
+        highlights:
+          - In progress
+
+      - institution: Arizona State University
+        area: Industrial Engineering
+        degree: MS
+        start_date: '2022'
+        end_date: '2024'
+
+      - institution: University of Arizona
+        area: Electrical Engineering
+        degree: MS
+        start_date: '2011'
+        end_date: '2014'
+
+      - institution: University of Arizona
+        area: Mechanical Engineering
+        degree: MS
+        start_date: '2007'
+        end_date: '2009'
+
+      - institution: University of Arizona
+        area: Mechanical Engineering
+        degree: BS
+        start_date: '2003'
+        end_date: '2007'
+
+    experience:
+      - company: Intel Corporation
+        position: Senior Technical Staff
+        location: Chandler, AZ
+        start_date: '2025-06'
+        end_date: present
+        highlights:
+          - Established and lead a cross-organization back-end test quality review, applying statistical root-cause analysis that substantially reduced major quality events and improved thermal-interface performance.
+          - Own the vision and roadmap for an automated robotics and machine-vision inspection system for test collateral, and lead its extension to additional test modules and commercial testers.
+          - Drive adoption of agentic-AI tools for log debugging, design-rule checking, and vision-model retraining, and of a physics-informed neural network for thermal quality prediction; presented at SEMICON West 2025 and SEMICON West 2026.
+          - Serve as Intel mentor and Co-PI for the Intel-ASU Generative Digital Twins for Semiconductor Test Operations research collaboration, including submission of an NSF Translation-to-Practice Partnership proposal.
+          - Lead the group's intern program as Intern Champion, coordinating summer intern hiring and intern-to-full-time conversion.
+
+      - company: Intel Corporation
+        position: Senior Technical Program Manager
+        location: Chandler, AZ
+        start_date: '2020-06'
+        end_date: '2024-06'
+        highlights:
+          - Led development and production deployment of new module processes for test collateral repairs, overseeing a 10-person engineering team and reducing total cost of ownership.
+          - Upgraded High-Density Burn-In capacity models, improving utilization for high-mix/low-volume operations and closing critical run-rate model gaps, and regularly reporting results to executive leadership.
+
+      - company: Intel Corporation
+        position: Module Development Engineer
+        location: Chandler, AZ
+        start_date: '2014-06'
+        end_date: '2020-06'
+        highlights:
+          - Led a cross-functional task force that resolved CPU yield degradation in high-volume manufacturing.
+          - Directed root cause analysis for failed tests and non-conforming products, enhancing quality and reliability of semiconductor products.
+
+      - company: Raytheon Missile Systems
+        position: RF/Antenna Project Manager & RF Mechanical Design Engineer
+        location: Tucson, AZ
+        start_date: '2006-05'
+        end_date: '2014-06'
+        highlights:
+          - Led design and optimization of radome assemblies and antennas for missile programs as Responsible Engineering Authority, applying statistical DOE and coupled mechanical/electrical simulation (ANSYS HFSS, Mechanical) to improve reliability and design margin.
+          - Designed robust RF/electronic packaging meeting EMI, vibration, and thermal requirements, delivering detailed mechanical designs per industry standards and GD&T for mission-critical hardware.
+
+    publications:
+      - title: 'ERGminer: Mining Event Relationship Graphs from Event Logs for Discrete-Event Simulation'
+        authors:
+          - Zachary Eyde
+          - Giulia Pedrielli
+        date: '2026-12'
+        journal: Proceedings of the 2026 Winter Simulation Conference
+
+      - title: 'Modular Python Library for Simulations of Semiconductor Assembly and Test Process Equipment'
+        authors:
+          - Robert Dodge
+          - Zachary Eyde
+          - Giulia Pedrielli
+        doi: 10.1109/WSC68292.2025.11338936
+        date: '2025-12'
+        journal: Proceedings of the 2025 Winter Simulation Conference
+
+      - title: 'Process Digital Twin for Semiconductor Test Equipment Using DES and ML'
+        authors:
+          - Zach Eyde
+          - Robert Dodge
+          - Giulia Pedrielli
+        date: '2024-12'
+        journal: Proceedings of the 2024 Winter Simulation Conference
+
+    skills:
+      - label: Licensure
+        details: 'Professional Engineer (Mechanical), Arizona (#55107)'
+      - label: CAD
+        details: Pro/Engineer, SolidWorks, AutoCAD
+      - label: Simulation/Analysis
+        details: ANSYS Mechanical, ANSYS HFSS, ANSYS ICEPak
+      - label: Programming
+        details: Python, SQL, JMP Scripting, C#, VBA, AMPL, Power BI
+      - label: Project Management
+        details: Budgeting, Risk Management, Scheduling, DOE, Cross-Functional Leadership
+      - label: AI/ML & Automation
+        details: Agentic AI, Physics-Informed Neural Networks, Machine Vision Inspection (Robotics), Generative Digital Twins

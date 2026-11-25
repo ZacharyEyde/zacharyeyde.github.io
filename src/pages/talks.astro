@@ -1,0 +1,199 @@
+---
+/**
+ * Talks & poster sessions page.
+ *
+ * Content lives in src/data/talks.yml (one list of entries).
+ * Entries with `type: poster` are shown under "poster sessions";
+ * everything else is shown under "talks & presentations".
+ * The markup reuses the publications list styles so both pages look alike.
+ */
+import { site } from '@config/site';
+import Page from '@layouts/Page.astro';
+import { withBase } from '@utils/base';
+import yaml from 'js-yaml';
+
+import talksRaw from '../data/talks.yml?raw';
+
+type Talk = {
+  title: string;
+  type?: string;
+  abbr?: string;
+  event?: string;
+  location?: string;
+  date?: string | number;
+  paper?: string;
+  slides?: string;
+  poster?: string;
+  video?: string;
+  description?: string;
+};
+
+type Section = { id: string; heading: string; items: Talk[] };
+
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+/** Read talks.yml and keep only entries that have a title. */
+function loadTalks(raw: string): Talk[] {
+  const parsed = yaml.load(raw);
+  if (!Array.isArray(parsed)) {
+    return [];
+  }
+  return parsed.filter((item) => item && typeof item.title === 'string') as Talk[];
+}
+
+/** Turn a date value into sortable text, e.g. '2026-12'. */
+function dateText(date: Talk['date']): string {
+  if (date === undefined || date === null) {
+    return '';
+  }
+  return String(date);
+}
+
+/** Newest first. ISO-style dates sort correctly as text. */
+function newestFirst(a: Talk, b: Talk): number {
+  return dateText(b.date).localeCompare(dateText(a.date));
+}
+
+/** Format '2026-12' as 'Dec 2026' and '2026-12-08' as 'Dec 8, 2026'. */
+function formatDate(date: Talk['date']): string {
+  const text = dateText(date);
+  const match = text.match(/^(\d{4})(?:-(\d{2}))?(?:-(\d{2}))?/);
+  if (!match) {
+    return text;
+  }
+  const year = match[1];
+  const month = match[2] ? MONTHS[Number(match[2]) - 1] : undefined;
+  const day = match[3] ? Number(match[3]) : undefined;
+  if (month && day) {
+    return `${month} ${day}, ${year}`;
+  }
+  if (month) {
+    return `${month} ${year}`;
+  }
+  return year;
+}
+
+/** Files in public/assets/pdf/ can be given by name; full URLs pass through. */
+function fileLink(path: string): string {
+  if (path.startsWith('http')) {
+    return path;
+  }
+  if (path.startsWith('/')) {
+    return withBase(path);
+  }
+  return withBase(`${site.publications.pdfDir}${path}`);
+}
+
+/** Badge text: the abbr if given, otherwise the type. */
+function badgeText(talk: Talk): string {
+  return talk.abbr ?? talk.type ?? 'talk';
+}
+
+/** Event and location on one line, e.g. 'WSC 2026 · Seattle, WA'. */
+function venueLine(talk: Talk): string {
+  return [talk.event, talk.location].filter(Boolean).join(' · ');
+}
+
+const allTalks = loadTalks(talksRaw);
+const posters = allTalks.filter((t) => t.type === 'poster').sort(newestFirst);
+const talks = allTalks.filter((t) => t.type !== 'poster').sort(newestFirst);
+
+const sections: Section[] = [
+  { id: 'talks', heading: 'talks & presentations', items: talks },
+  { id: 'posters', heading: 'poster sessions', items: posters },
+].filter((section) => section.items.length > 0);
+---
+
+<Page title="Talks" description={`Talks and poster sessions by ${site.author.name}`}>
+  <div class="post">
+    <header class="post-header">
+      <h1 class="post-title">talks</h1>
+      <p class="post-description">Conference talks, presentations, and poster sessions.</p>
+    </header>
+    <article>
+      {
+        sections.length === 0 ? (
+          <p style="color: var(--global-text-color-light);">No talks yet.</p>
+        ) : (
+          <div class="publications">
+            {sections.map((section) => (
+              <section id={section.id}>
+                <h2 class="year">{section.heading}</h2>
+                <ol class="bibliography">
+                  {section.items.map((talk) => (
+                    <li>
+                      <div class="row">
+                        <div class="col col-sm-2 abbr">
+                          <abbr class="badge w-100 rounded">{badgeText(talk)}</abbr>
+                        </div>
+                        <div class="col-sm-8">
+                          <div class="title">{talk.title}</div>
+                          {venueLine(talk) && <div class="author">{venueLine(talk)}</div>}
+                          {talk.date !== undefined && (
+                            <div class="periodical">{formatDate(talk.date)}</div>
+                          )}
+                          {talk.description && <div class="periodical">{talk.description}</div>}
+                          <div class="links">
+                            {talk.paper && (
+                              <a class="btn btn-sm z-depth-0" href={withBase(`/publications/${talk.paper}/`)}>
+                                Paper
+                              </a>
+                            )}
+                            {talk.slides && (
+                              <a
+                                class="btn btn-sm z-depth-0"
+                                href={fileLink(talk.slides)}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                Slides
+                              </a>
+                            )}
+                            {talk.poster && (
+                              <a
+                                class="btn btn-sm z-depth-0"
+                                href={fileLink(talk.poster)}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                Poster
+                              </a>
+                            )}
+                            {talk.video && (
+                              <a
+                                class="btn btn-sm z-depth-0"
+                                href={talk.video}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                Video
+                              </a>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+              </section>
+            ))}
+          </div>
+        )
+      }
+    </article>
+  </div>
+</Page>
+
+<style>
+  .post-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .post-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--global-text-color);
+    font-family: var(--font-sans);
+    margin-bottom: 0;
+  }
+</style>
